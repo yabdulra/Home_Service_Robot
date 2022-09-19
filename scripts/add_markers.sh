@@ -7,4 +7,4 @@ xterm  -e "roslaunch service_bot amcl.launch" &
 sleep 5
 xterm  -e "roslaunch turtlebot3_gazebo view_navigation.launch" &
 sleep 5
-xterm -e "rosrun add_markers add_markers"
+xterm -e "rosrun add_markers add_markers_test"
