@@ -74,18 +74,29 @@ class Markers{
 
 int main( int argc, char** argv )
 {
-  ros::init(argc, argv, "add_markers");
+  ros::init(argc, argv, "add_markers_test");
 
   Markers markers;
 
+  ros::NodeHandle nh;
+
   ros::Rate loop_rate(10);
+
+  double x1, y1, x2, y2;
+  // get node name
+  std::string node_name = ros::this_node::getName();  
+  //get circle parameters
+  nh.getParam(node_name + "/pickup_x", x1);
+  nh.getParam(node_name + "/pickup_y", y1);
+  nh.getParam(node_name + "/dropoff_x", x2);
+  nh.getParam(node_name + "/dropoff_y", y2);
 
   // Set our shape type to be a cube
   uint32_t shape = visualization_msgs::Marker::CUBE;
  
   markers.delay(1);
   markers.define_marker(shape);
-  markers.add_marker(-7.0, 2.0);
+  markers.add_marker(x1, y1);
   ROS_INFO("virtual object at pickup location");
   markers.delay(5.0);
 
@@ -94,7 +105,7 @@ int main( int argc, char** argv )
   markers.delay(5.0);
 
   markers.define_marker(shape);
-  markers.add_marker(3.0, -6.5);
+  markers.add_marker(x2, y2);
   ROS_INFO("virtual object at drop off location");
   markers.delay(5.0);
 

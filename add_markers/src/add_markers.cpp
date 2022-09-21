@@ -107,21 +107,32 @@ int main( int argc, char** argv )
   Robot robot;
   Markers markers;
 
+  ros::NodeHandle nh;
+
   ros::Rate loop_rate(10);
+
+  double x1, y1, x2, y2;
+  // get node name
+  std::string node_name = ros::this_node::getName();  
+  //get circle parameters
+  nh.getParam(node_name + "/pickup_x", x1);
+  nh.getParam(node_name + "/pickup_y", y1);
+  nh.getParam(node_name + "/dropoff_x", x2);
+  nh.getParam(node_name + "/dropoff_y", y2);
 
   // Set our shape type to be a cube
   uint32_t shape = visualization_msgs::Marker::CUBE;
-  std::vector<double> robot_pose, pickup{-7.0, 2.0}, dropoff{3.0, -6.5};
+  std::vector<double> robot_pose, pickup{x1, y1}, dropoff{x2, y2};
 
   double distance, x, y;
   bool picked = false, dropped = false;
     
-  x = pickup[0];
-  y = pickup[1];
+  //x = pickup[0];
+  //y = pickup[1];
   while (ros::ok())
   { 
     robot_pose = robot.get_robot_pose();
-    distance = euclidean_distance(robot_pose[0], robot_pose[1], x, y);
+    distance = euclidean_distance(robot_pose[0], robot_pose[1], pickup[0], pickup[1]);
 
     if(picked == false && distance > 0.2){
       markers.define_marker(shape);
@@ -133,9 +144,9 @@ int main( int argc, char** argv )
       picked = true;
     }
     else{
-      x = dropoff[0];
-      y = dropoff[1];
-      distance = euclidean_distance(robot_pose[0], robot_pose[1], x, y);
+      //x = dropoff[0];
+      //y = dropoff[1];
+      distance = euclidean_distance(robot_pose[0], robot_pose[1], dropoff[0], dropoff[1]);
   
       if (dropped == false && distance <= 0.2){
         markers.delay(4);
