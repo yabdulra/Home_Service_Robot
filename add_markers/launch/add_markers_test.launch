@@ -1,5 +1,5 @@
 <launch>
-  <node pkg="add_markers" type="add_markers" name="add_markers" output="screen">
+  <node pkg="add_markers" type="add_markers_test" name="add_markers_test" output="screen">
     <rosparam>
       pickup_x: -7.0
       pickup_y: 2.0
