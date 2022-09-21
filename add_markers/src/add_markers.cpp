@@ -8,14 +8,14 @@
 #include <vector>
 #include <cmath>
 
-class AddMarkers{
+class Markers{
   private:
     ros::NodeHandle n;
     ros::Publisher marker_pub;
     visualization_msgs::Marker marker;
 
   public:
-    AddMarkers(){
+    Markers(){
       marker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 1);
     };
 
@@ -105,7 +105,7 @@ int main( int argc, char** argv )
 {
   ros::init(argc, argv, "add_markers");
   Robot robot;
-  AddMarkers markers;
+  Markers markers;
 
   ros::Rate loop_rate(10);
 
