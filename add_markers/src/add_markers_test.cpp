@@ -85,7 +85,7 @@ int main( int argc, char** argv )
   double x1, y1, x2, y2;
   // get node name
   std::string node_name = ros::this_node::getName();  
-  //get circle parameters
+  //get goals parameters
   nh.getParam(node_name + "/pickup_x", x1);
   nh.getParam(node_name + "/pickup_y", y1);
   nh.getParam(node_name + "/dropoff_x", x2);
