@@ -29,6 +29,17 @@ void delay(double duration){
 int main(int argc, char** argv){
   ros::init(argc, argv, "pick_objects");
 
+  ros::NodeHandle nh;
+
+  double x1, y1, x2, y2;
+  // get node name
+  std::string node_name = ros::this_node::getName();  
+  //get goals parameters
+  nh.getParam(node_name + "/pickup_x", x1);
+  nh.getParam(node_name + "/pickup_y", y1);
+  nh.getParam(node_name + "/dropoff_x", x2);
+  nh.getParam(node_name + "/dropoff_y", y2);
+
   //tell the action client that we want to spin a thread by default
   MoveBaseClient ac("move_base", true);
   Goal goal;
@@ -38,7 +49,7 @@ int main(int argc, char** argv){
     ROS_INFO("Waiting for the move_base action server to come up");
   }
 
-  goal = set_goal(-7.0, 2.0, 1.0);
+  goal = set_goal(x1, y1, 1.0);
 
   ROS_INFO("received pickup location");
   ROS_INFO("moving to pickup location");
@@ -55,7 +66,7 @@ int main(int argc, char** argv){
   delay(5.0);
   ROS_INFO("object picked");
 
-  goal = set_goal(3.0, -6.5, 1.0);
+  goal = set_goal(x2, y2, 1.0);
  
   ROS_INFO("received drop off location");
   ROS_INFO("moving to drop off location");
