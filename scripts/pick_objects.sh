@@ -7,4 +7,4 @@ xterm  -e "roslaunch service_bot amcl.launch" &
 sleep 5
 xterm  -e "roslaunch turtlebot3_gazebo view_navigation.launch" &
 sleep 5
-xterm -e "rosrun pick_objects pick_objects"
+xterm -e "roslaunch pick_objects pick_objects.launch"
