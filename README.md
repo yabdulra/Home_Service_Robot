@@ -118,10 +118,7 @@ The shell scripts in the `scripts` directory provides a number of tasks that can
     - `roslaunch service_bot amcl.launch` to launch amcl and the navigation stack,
     - `roslaunch turtlebot3_gazebo view_navigation.launch` to launch rviz for map visualization.  
 
-    Use the `2D Nav Goal` on the tools panel on RVIZ to send to navigation goals, one at a time to visualize the robot move to the set goal locations. A sample video(2.5 times speed) below shows the robot moving to the set goal locations.  
-
-   <iframe id="video" width="560" height="315" src="https://www.youtube.com/watch?v=NZ7jPu-n5AY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
-
+    Use the `2D Nav Goal` on the tools panel on RVIZ to send to navigation goals, one at a time to visualize the robot move to the set goal locations. A sample video(2.5 times speed) in [this link](https://www.youtube.com/watch?v=NZ7jPu-n5AY) shows the robot moving to the set goal locations.  
   
   * ### Pick Objects
     The `pick_objects.sh` builds on the `test_navigation.sh` script to launch a node that sends predefined goal poses (pickup and drop-off goals) to the robot to simulate the movement of the robot from initial pose to the pickup location, and finally to the drop-off location. The image below shows the steps taken by the robot to move from pickup location to the drop-off location.
@@ -136,8 +133,6 @@ The shell scripts in the `scripts` directory provides a number of tasks that can
     </p>
 
   * ### Home Service
-    To integrate the pieces together and simulate a full home service robot, communication is eastablished between the add_markers node the pick_objects node. Virtual object is published at the pickup location which disappear (assumed to have been picked up) once the robot arrives the pickup location. The robot then moves to deliver the object which appears at the final goal as soon as the robot reaches the goal. `home_service.sh` is used to launch the necessary packages to simulate the home service robot. A sample video shows the robot delivering object from pickup to drop-off locations.
-
-   <iframe id="video" width="560" height="315" src="https://www.youtube.com/watch?v=v96rTuizjFU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+    To integrate the pieces together and simulate a full home service robot, communication is eastablished between the add_markers node the pick_objects node. Virtual object is published at the pickup location which disappear (assumed to have been picked up) once the robot arrives the pickup location. The robot then moves to deliver the object which appears at the final goal as soon as the robot reaches the goal. `home_service.sh` is used to launch the necessary packages to simulate the home service robot. A sample video in [this link](https://www.youtube.com/watch?v=v96rTuizjFU) shows the robot delivering object from pickup to drop-off locations.
 
 
