@@ -120,7 +120,7 @@ The shell scripts in the `scripts` directory provides a number of tasks that can
 
     Use the `2D Nav Goal` on the tools panel on RVIZ to send to navigation goals, one at a time to visualize the robot move to the set goal locations. A sample video(2.5 times speed) below shows the robot moving to the set goal locations.  
 
-    <video controls="true" poster="images/test_nav.png">
+    <video controls="true" width="650" height="450" poster="images/test_nav.png">
       <source src="images/test_nav.mp4" type="video/mp4"> 
     </video>
   
@@ -139,7 +139,7 @@ The shell scripts in the `scripts` directory provides a number of tasks that can
   * ### Home Service
     To integrate the pieces together and simulate a full home service robot, communication is eastablished between the add_markers node the pick_objects node. Virtual object is published at the pickup location which disappear (assumed to have been picked up) once the robot arrives the pickup location. The robot then moves to deliver the object which appears at the final goal as soon as the robot reaches the goal. `home_service.sh` is used to launch the necessary packages to simulate the home service robot. A sample video shows the robot delivering object from pickup to drop-off locations.
 
-    <video controls="true" poster="images/home_service.png">
+    <video controls="true" width="650" height="450" poster="images/home_service.png">
       <source src="images/home_service.mp4" type="video/mp4"> 
     </video>
 
